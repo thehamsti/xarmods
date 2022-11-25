@@ -76,7 +76,7 @@ Feel free to create an issue if you want something added or fixed. All pull requ
 
 ----
 
-## Credits and references
+## Credits
 
 1. Xaryu - [Twitch](https://twitch.tv/xaryu), [Twitter](https://twitter.com/xaryu)
 2. Stako
