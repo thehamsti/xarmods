@@ -55,13 +55,6 @@ addon.optionsTable = {
 	},
 }
 
-local function DebugPrintf(...)
-  local status, res = pcall(format, ...)
-  if status then
-    if DLAPI then DLAPI.DebugLog(addonName, res) end
-  end
-end
-
 addon.modules = {}
 
 local moduleOrder = 1
