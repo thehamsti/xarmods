@@ -1,0 +1,21 @@
+<Ui>
+	<!-- Libraries -->
+	<Script file="Libs\LibStub\LibStub.lua"/>
+	<Include file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+	<Include file="Libs\AceDB-3.0\AceDB-3.0.xml"/>
+	<Include file="Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml"/>
+	<Include file="Libs\AceGUI-3.0\AceGUI-3.0.xml"/>
+	<Include file="Libs\AceConfig-3.0\AceConfig-3.0.xml"/>
+	<Script file="Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua"/>
+	<Include file="Libs\LibDBIcon-1.0\lib.xml"/>
+
+	<!-- Core -->
+	<Script file="core.lua"/>
+
+	<!-- Modules -->
+	<Script file="Modules\interface.lua"/>
+	<Script file="Modules\actionbars.lua"/>
+	<Script file="Modules\unitframes.lua"/>
+	<Script file="Modules\chat.lua"/>
+	<Script file="Modules\posturechecks.lua"/>
+</Ui>
