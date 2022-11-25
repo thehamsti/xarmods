@@ -116,7 +116,7 @@ module.optionsTable = {
 		order = 15,
 		type = "header",
 		name = "Arena",
-	},
+	}
 	-- dampeningDisplay = {
 	-- 	order = 16,
 	-- 	type = "toggle",
