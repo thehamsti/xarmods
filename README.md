@@ -58,7 +58,7 @@ Thank you to Stako, the creator of sArena, for making this possible!
 
 ## Installation
 
-Download the addon [here](https://www.curseforge.com/wow/addons/xarmods)
+Download the addon on [CurseForge](https://www.curseforge.com/wow/addons/xarmods)
 
 Click the minimap button or type /xar for options to configure.
 
@@ -76,16 +76,8 @@ Feel free to create an issue if you want something added or fixed. All pull requ
 
 ----
 
-## Open source licensing info
-1. [TERMS](TERMS.md)
-2. [LICENSE](LICENSE)
-3. [CFPB Source Code Policy](https://github.com/cfpb/source-code-policy/)
-
-
-----
-
 ## Credits and references
 
-1. Xaryu - [Twitch](https://twitch.tv/xaryu) [Twitter](https://twitter.com/xaryu)
+1. Xaryu - [Twitch](https://twitch.tv/xaryu), [Twitter](https://twitter.com/xaryu)
 2. Stako
-3. jctrvlr aka Hamsti aka John Cummings - [Twitter](https://twitter.com/thehamsti) [Twitch](https://twitch.tv/hamsti)
+3. jctrvlr aka Hamsti aka John Cummings - [Twitter](https://twitter.com/thehamsti), [Twitch](https://twitch.tv/hamsti)
