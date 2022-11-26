@@ -11,7 +11,6 @@ module.defaultSettings = {
 	hideZoom = false,
 	sellGrays = false,
 	repair = false,
-	dampeningDisplay = false,
 }
 
 module.optionsTable = {
@@ -104,18 +103,6 @@ module.optionsTable = {
 		name = "Auto Repair",
 		width = "full",
 	},
-	header_arena = {
-		order = 15,
-		type = "header",
-		name = "Arena",
-	}
-	-- dampeningDisplay = {
-	-- 	order = 16,
-	-- 	type = "toggle",
-	-- 	name = "Dampening Display",
-	-- 	desc = "Text at the top of the screen to indicate dampening severity in arenas",
-	-- 	width = "full",
-	-- },
 }
 
 local eventHandler = CreateFrame("Frame", nil , UIParent)
@@ -133,7 +120,6 @@ function module:XaryuSettings()
 	db.hideZoom = true
 	db.sellGrays = true
 	db.repair = true
-	db.dampeningDisplay = true
 end
 
 function module:OnLoad()
@@ -199,37 +185,6 @@ function module:OnLoad()
 	SetCVar("ffxDeath", db.hideEffects and 0 or 1)
 	SetCVar("ffxNether", db.hideEffects and 0 or 1)
 
-	if db.dampeningDisplay then
-		local dampeningText = GetSpellInfo(110310)
-
-		local dampeningFrame = CreateFrame("Frame", nil , UIParent)
-		dampeningFrame:SetSize(200, 12)
-		dampeningFrame:SetPoint("TOP", UIWidgetTopCenterContainerFrame, "BOTTOM", 0, -2)
-		dampeningFrame.text = dampeningFrame:CreateFontString(nil, "BACKGROUND")
-		dampeningFrame.text:SetFontObject(GameFontNormalSmall)
-		dampeningFrame.text:SetAllPoints()
-
-		local function DampeningDisplay_Update()
-			dampeningFrame.text:SetText(dampeningText..": "..C_Commentator.GetDampeningPercent().."%")
-		end
-
-		local dampeningTicker
-
-		dampeningFrame:SetScript("OnEvent", function(self)
-			if dampeningTicker then
-				dampeningTicker:Cancel()
-			end
-
-			if select(2, IsInInstance()) == "arena" then
-				dampeningFrame:Show()
-				dampeningTicker = C_Timer.NewTicker(5, DampeningDisplay_Update)
-			else
-				dampeningFrame:Hide()
-			end
-		end)
-
-		dampeningFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-	end
 end
 
 function eventHandler:MERCHANT_SHOW()

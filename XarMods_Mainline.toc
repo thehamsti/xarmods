@@ -1,7 +1,7 @@
 ## Interface: 100002
 ## Title: |cff00c0ffXarMods|r
 ## Author: Stako, Hamsti
-## Version: 1.2
+## Version: 2.0.1
 ## SavedVariables: XarModsDB
 
 XarMods.xml
