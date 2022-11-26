@@ -49,38 +49,38 @@ module.optionsTable = {
 		type = "header",
 		name = "Buttons",
 	},
-	extraButtons = {
-		order = 7,
-		type = "toggle",
-		name = "Extra Buttons",
-		desc = "Moves the 12th button on each of the right side actionbars down to the bottom bars. WIP: Not working yet",
-		width = "full",
-	},
+	-- extraButtons = {
+	-- 	order = 7,
+	-- 	type = "toggle",
+	-- 	name = "Extra Buttons",
+	-- 	desc = "Moves the 12th button on each of the right side actionbars down to the bottom bars. WIP: Not working yet",
+	-- 	width = "full", -- WIP
+	-- },
 	hideMacroNames = {
 		order = 8,
 		type = "toggle",
 		name = "Hide Macro Names",
 		width = "full",
 	},
-	hideKeyBinds = {
-		order = 9,
-		type = "toggle",
-		name = "Hide Key Binds",
-		width = "full",
-	},
-	shortKeybindText = {
-		order = 10,
-		type = "toggle",
-		name = "Short Key Bind Text",
-		desc = "(e.g. 'Mousewheel Up' -> 'WU')",
-		width = "full",
-	},
-	altKeybindFont = {
-		order = 11,
-		type = "toggle",
-		name = "Alternate Key Bind Font",
-		width = "full",
-	},
+	-- hideKeyBinds = {
+	-- 	order = 9,
+	-- 	type = "toggle",
+	-- 	name = "Hide Key Binds",
+	-- 	width = "full",
+	-- },
+	-- shortKeybindText = {
+	-- 	order = 10,
+	-- 	type = "toggle",
+	-- 	name = "Short Key Bind Text",
+	-- 	desc = "(e.g. 'Mousewheel Up' -> 'WU')",
+	-- 	width = "full",
+	-- },
+	-- altKeybindFont = {
+	-- 	order = 11,
+	-- 	type = "toggle",
+	-- 	name = "Alternate Key Bind Font",
+	-- 	width = "full",
+	-- },
 }
 
 local eventHandler = CreateFrame("Frame", nil, UIParent)
@@ -184,87 +184,87 @@ function module:OnLoad()
 		tinsert(buttons, _G["MultiBarRightButton"..i])
 	end
 
-	if db.hideKeyBinds then
-		local function updateHotkeys(self)
-			self.HotKey:Hide()
-		end
+	-- if db.hideKeyBinds then
+	-- 	local function updateHotkeys(self)
+	-- 		self.HotKey:Hide()
+	-- 	end
 
-		for _, button in pairs(buttons) do
-			hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
-		end
+	-- 	for _, button in pairs(buttons) do
+	-- 		hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
+	-- 	end
 	
-		hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
-		hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
-	end
+	-- 	hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
+	-- 	hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
+	-- end
 
-	if db.shortKeybindText then
-		local function updateHotkeys(self)
-			local hotkey = self.HotKey
-			local text = hotkey:GetText()
+	-- if db.shortKeybindText then
+	-- 	local function updateHotkeys(self)
+	-- 		local hotkey = self.HotKey
+	-- 		local text = hotkey:GetText()
 	
-			text = gsub(text, "(s%-)", "S")
-			text = gsub(text, "(a%-)", "A")
-			text = gsub(text, "(c%-)", "C")
-			text = gsub(text, "(st%-)", "C")
+	-- 		text = gsub(text, "(s%-)", "S")
+	-- 		text = gsub(text, "(a%-)", "A")
+	-- 		text = gsub(text, "(c%-)", "C")
+	-- 		text = gsub(text, "(st%-)", "C")
 	
-			for i = 1, 30 do
-				text = gsub(text, _G["KEY_BUTTON"..i], "M"..i)
-			end
+	-- 		for i = 1, 30 do
+	-- 			text = gsub(text, _G["KEY_BUTTON"..i], "M"..i)
+	-- 		end
 	
-			for i = 1, 9 do
-				text = gsub(text, _G["KEY_NUMPAD"..i], "Nu"..i)
-			end
+	-- 		for i = 1, 9 do
+	-- 			text = gsub(text, _G["KEY_NUMPAD"..i], "Nu"..i)
+	-- 		end
 	
-			text = gsub(text, KEY_NUMPADDECIMAL, "Nu.")
-			text = gsub(text, KEY_NUMPADDIVIDE, "Nu/")
-			text = gsub(text, KEY_NUMPADMINUS, "Nu-")
-			text = gsub(text, KEY_NUMPADMULTIPLY, "Nu*")
-			text = gsub(text, KEY_NUMPADPLUS, "Nu+")
+	-- 		text = gsub(text, KEY_NUMPADDECIMAL, "Nu.")
+	-- 		text = gsub(text, KEY_NUMPADDIVIDE, "Nu/")
+	-- 		text = gsub(text, KEY_NUMPADMINUS, "Nu-")
+	-- 		text = gsub(text, KEY_NUMPADMULTIPLY, "Nu*")
+	-- 		text = gsub(text, KEY_NUMPADPLUS, "Nu+")
 	
-			text = gsub(text, KEY_MOUSEWHEELUP, "WU")
-			text = gsub(text, KEY_MOUSEWHEELDOWN, "WD")
-			text = gsub(text, KEY_NUMLOCK, "NuL")
-			text = gsub(text, KEY_PAGEUP, "PU")
-			text = gsub(text, KEY_PAGEDOWN, "PD")
-			text = gsub(text, KEY_SPACE, "_")
-			text = gsub(text, KEY_INSERT, "Ins")
-			text = gsub(text, KEY_HOME, "Hm")
-			text = gsub(text, KEY_DELETE, "Del")
-			text = gsub(text, "Capslock", "Caps")
+	-- 		text = gsub(text, KEY_MOUSEWHEELUP, "WU")
+	-- 		text = gsub(text, KEY_MOUSEWHEELDOWN, "WD")
+	-- 		text = gsub(text, KEY_NUMLOCK, "NuL")
+	-- 		text = gsub(text, KEY_PAGEUP, "PU")
+	-- 		text = gsub(text, KEY_PAGEDOWN, "PD")
+	-- 		text = gsub(text, KEY_SPACE, "_")
+	-- 		text = gsub(text, KEY_INSERT, "Ins")
+	-- 		text = gsub(text, KEY_HOME, "Hm")
+	-- 		text = gsub(text, KEY_DELETE, "Del")
+	-- 		text = gsub(text, "Capslock", "Caps")
 	
-			hotkey:SetText(text)
-		end
+	-- 		hotkey:SetText(text)
+	-- 	end
 	
-		for _, button in pairs(buttons) do
-			hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
-		end
+	-- 	for _, button in pairs(buttons) do
+	-- 		hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
+	-- 	end
 	
-		hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
-		hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
-	end
+	-- 	hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
+	-- 	hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
+	-- end
 
-	if db.altKeybindFont then
-		-- RANGE_INDICATOR = "*"
+	-- if db.altKeybindFont then
+	-- 	-- RANGE_INDICATOR = "*"
 
-		local function updateHotkeys(self)
-			local hotkey = self.HotKey
-			local text = hotkey:GetText()
+	-- 	local function updateHotkeys(self)
+	-- 		local hotkey = self.HotKey
+	-- 		local text = hotkey:GetText()
 	
-			if not self.XarModded then
-				self.XarModded = true
-				hotkey:SetFontObject("Game11Font_o1")
-				hotkey:ClearAllPoints()
-				hotkey:SetPoint("TOPRIGHT", -1, -3)
-			end
-		end
+	-- 		if not self.XarModded then
+	-- 			self.XarModded = true
+	-- 			hotkey:SetFontObject("Game11Font_o1")
+	-- 			hotkey:ClearAllPoints()
+	-- 			hotkey:SetPoint("TOPRIGHT", -1, -3)
+	-- 		end
+	-- 	end
 	
-		for _, button in pairs(buttons) do
-			hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
-		end
+	-- 	for _, button in pairs(buttons) do
+	-- 		hooksecurefunc(button, "UpdateHotkeys", updateHotkeys)
+	-- 	end
 	
-		hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
-		hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
-	end
+	-- 	hooksecurefunc("ActionButton_UpdateRangeIndicator", updateHotkeys)
+	-- 	hooksecurefunc("PetActionButton_SetHotkeys", updateHotkeys)
+	-- end
 
 	if db.hideMacroNames then
 		for _, button in pairs(buttons) do
