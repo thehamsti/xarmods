@@ -78,8 +78,8 @@ module.optionsTable = {
 		type = "select",
 		name = "Style",
 		values = {
-			"Elite",
 			"Rare",
+			"Elite",
 			"Rare Elite",
 		},
 		set = function(info, val)
@@ -117,15 +117,23 @@ function module:OnLoad()
 	end
 
 	if db.hidePvpIcons then
-		PlayerPVPIcon:SetAlpha(0)
-		PlayerPrestigeBadge:SetAlpha(0)
-		PlayerPrestigePortrait:SetAlpha(0)
-		TargetFrameTextureFramePVPIcon:SetAlpha(0)
-		TargetFrameTextureFramePrestigeBadge:SetAlpha(0)
-		TargetFrameTextureFramePrestigePortrait:SetAlpha(0)
-		FocusFrameTextureFramePVPIcon:SetAlpha(0)
-		FocusFrameTextureFramePrestigeBadge:SetAlpha(0)
-		FocusFrameTextureFramePrestigePortrait:SetAlpha(0)
+		-- Set contextuals
+		local playerFrameTargetContextual = PlayerFrame_GetPlayerFrameContentContextual()
+		local targetFrameContextual = TargetFrame.TargetFrameContent.TargetFrameContentContextual
+		-- TargetFrame.TargetFrameContent.TargetFrameContentContextual.PrestigePortrait:SetAlpha(0)
+		--local targetFrameTargetContextual = TargetFrame_GetTargetFrameContentContextual();
+		-- Self
+		playerFrameTargetContextual.PVPIcon:SetAlpha(0)
+		playerFrameTargetContextual.PrestigePortrait:SetAlpha(0)
+		playerFrameTargetContextual.PrestigeBadge:SetAlpha(0)
+		-- Target frames
+		--TargetFrame.TargetFrameContent.TargetFrameContentContextual.PVPIcon:SetAlpha(0)
+		TargetFrame.TargetFrameContent.TargetFrameContentContextual.PrestigePortrait:SetAlpha(0)
+		TargetFrame.TargetFrameContent.TargetFrameContentContextual.PrestigeBadge:SetAlpha(0)
+		-- Focus frames
+		--TargetFrame.FocusFrame.PVPIcon:SetAlpha(0)
+		--TargetFrame.FocusFrame.PrestigePortrait:SetAlpha(0)
+		--TargetFrame.FocusFrame.PrestigeBadge:SetAlpha(0)
 	end
 
 	if db.combatIndicator then
@@ -192,10 +200,22 @@ function module.SetChainStyle()
 	local chain = db.chainStyle
 
 	if chain == 1 then -- Rare
-		PlayerFrameTexture:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Rare")
+		-- Set rare texture to player frame
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("ui-hud-unitframe-target-portraiton-boss-rare-silver", TextureKitConstants.UseAtlasSize);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", 11, -8);
 	elseif chain == 2 then -- Elite
-		PlayerFrameTexture:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Elite")
+		-- Set rare texture to player frame
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("UI-HUD-UnitFrame-Target-PortraitOn-Boss-Gold", TextureKitConstants.UseAtlasSize);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", 11, -8);
 	elseif chain == 3 then -- Rare Elite
-		PlayerFrameTexture:SetTexture("Interface\\TargetingFrame\\UI-TargetingFrame-Rare-Elite")
+		-- Set rare texture to player frame
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("UI-HUD-UnitFrame-Target-PortraitOn-Boss-Gold-Winged", TextureKitConstants.UseAtlasSize);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", -8, -8);
 	end
 end
