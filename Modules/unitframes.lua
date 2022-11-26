@@ -43,50 +43,50 @@ module.optionsTable = {
 		desc = "Icons indicating if a player if flagged for PvP and/or prestige badge",
 		width = "full",
 	},
-	header_classColors = {
-		order = 4,
-		type = "header",
-		name = "Class Colors",
-	},
-	classColorsPlayer = {
-		order = 5,
-		type = "toggle",
-		name = "Player",
-		width = "full",
-	},
-	classColorsOthers = {
-		order = 6,
-		type = "toggle",
-		name = "Others",
-		desc = "Target, Target-of-Target, Focus, etc.",
-		width = "full",
-	},
-	header_playerChain = {
-		order = 7,
-		type = "header",
-		name = "Player Chain",
-	},
-	enablePlayerChain = {
-		order = 8,
-		type = "toggle",
-		name = "Enable",
-		desc = "Shows a rare, elite or rare elite chain around the player frame",
-		width = "half",
-	},
-	chainStyle = {
-		order = 9,
-		type = "select",
-		name = "Style",
-		values = {
-			"Rare",
-			"Elite",
-			"Rare Elite",
-		},
-		set = function(info, val)
-			module.db[info[#info]] = val
-			module.SetChainStyle()
-		end,
-	},
+	-- header_classColors = {
+	-- 	order = 4,
+	-- 	type = "header",
+	-- 	name = "Class Colors",
+	-- },
+	-- classColorsPlayer = {
+	-- 	order = 5,
+	-- 	type = "toggle",
+	-- 	name = "Player",
+	-- 	width = "full",
+	-- },
+	-- classColorsOthers = {
+	-- 	order = 6,
+	-- 	type = "toggle",
+	-- 	name = "Others",
+	-- 	desc = "Target, Target-of-Target, Focus, etc.",
+	-- 	width = "full",
+	-- },
+	-- header_playerChain = {
+	-- 	order = 7,
+	-- 	type = "header",
+	-- 	name = "Player Chain",
+	-- },
+	-- enablePlayerChain = {
+	-- 	order = 8,
+	-- 	type = "toggle",
+	-- 	name = "Enable",
+	-- 	desc = "Shows a rare, elite or rare elite chain around the player frame",
+	-- 	width = "half",
+	-- },
+	-- chainStyle = {
+	-- 	order = 9,
+	-- 	type = "select",
+	-- 	name = "Style",
+	-- 	values = {
+	-- 		"Rare",
+	-- 		"Elite",
+	-- 		"Rare Elite",
+	-- 	},
+	-- 	set = function(info, val)
+	-- 		module.db[info[#info]] = val
+	-- 		module.SetChainStyle()
+	-- 	end,
+	-- },
 	header_miscellaneous = {
 		order = 10,
 		type = "header",
