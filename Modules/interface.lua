@@ -9,7 +9,6 @@ module.defaultSettings = {
 	hideGlow = false,
 	hideEffects = false,
 	hideZoom = false,
-	scrollZoom = false,
 	sellGrays = false,
 	repair = false,
 	dampeningDisplay = false,
@@ -88,13 +87,6 @@ module.optionsTable = {
 		name = "Hide Zoom Buttons",
 		width = "full",
 	},
-	scrollZoom = {
-		order = 11,
-		type = "toggle",
-		name = "Enable Scroll Wheel Zooming",
-		desc = "Zoom in & out on minimap using mousewheel",
-		width = "full",
-	},
 	header_automation = {
 		order = 12,
 		type = "header",
@@ -139,7 +131,6 @@ function module:XaryuSettings()
 	db.hideGlow = true
 	db.hideEffects = true
 	db.hideZoom = true
-	db.scrollZoom = true
 	db.sellGrays = true
 	db.repair = true
 	db.dampeningDisplay = true
@@ -161,37 +152,46 @@ function module:OnLoad()
 	end
 
 	if db.hideBags then
-		MicroButtonAndBagsBar:Hide()
+		-- Hide backpack symbol
+		MainMenuBarBackpackButton:Hide()
+		-- Hide toggle
+		BagBarExpandToggle:Hide()
+		-- Loop through all bag buttons
+		for i = 0, 3 do
+			local bagButton = _G["CharacterBag"..i.."Slot"]
+			bagButton:Hide()
+		end
+		-- Hide reagent bag
+		CharacterReagentBag0Slot:Hide()
+
 	end
 
 	if db.hideMicroButtons then
-		local tframe = CreateFrame("FRAME")
-		tframe:Hide()
-
-		hooksecurefunc("UpdateMicroButtonsParent", function()
-			for i=1, #MICRO_BUTTONS do
-				_G[MICRO_BUTTONS[i]]:SetParent(tframe)
-			end
-		end)
-
-		UpdateMicroButtonsParent(tframe)
+		local micro_buttons_to_hide = {
+			"CharacterMicroButton",
+			"SpellbookMicroButton",
+			"TalentMicroButton",
+			"AchievementMicroButton",
+			"QuestLogMicroButton",
+			"GuildMicroButton",
+			"LFDMicroButton",
+			"CollectionsMicroButton",
+			"EJMicroButton",
+			"StoreMicroButton",
+			"MainMenuMicroButton"
+		}
+		-- Hide all micro buttons - Character, Spellbook, Talent, Achievement, Quest, Guild, LFD, Collections, Store, MainMenu
+		for i = 1, #micro_buttons_to_hide do
+			local button = _G[micro_buttons_to_hide[i]]
+			button:SetScript("OnShow", button.Hide)
+			button.Show = function () end
+			button:Hide()
+		end
 	end
 
 	if db.hideZoom then
-		MinimapZoomIn:Hide()
-		MinimapZoomOut:Hide()
-	end
-
-	if db.scrollZoom then
-		Minimap:EnableMouseWheel(true)
-
-		Minimap:SetScript("OnMouseWheel", function(self, arg1)
-			if arg1 > 0 then
-				Minimap_ZoomIn()
-			else
-				Minimap_ZoomOut()
-			end
-		end)
+		Minimap.ZoomIn:SetAlpha(0)
+		Minimap.ZoomOut:SetAlpha(0)
 	end
 
 	SetCVar("ffxGlow", db.hideGlow and 0 or 1)
