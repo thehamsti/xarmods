@@ -43,50 +43,50 @@ module.optionsTable = {
 		desc = "Icons indicating if a player if flagged for PvP and/or prestige badge",
 		width = "full",
 	},
-	-- header_classColors = {
-	-- 	order = 4,
-	-- 	type = "header",
-	-- 	name = "Class Colors",
-	-- },
-	-- classColorsPlayer = {
-	-- 	order = 5,
-	-- 	type = "toggle",
-	-- 	name = "Player",
-	-- 	width = "full",
-	-- },
-	-- classColorsOthers = {
-	-- 	order = 6,
-	-- 	type = "toggle",
-	-- 	name = "Others",
-	-- 	desc = "Target, Target-of-Target, Focus, etc.",
-	-- 	width = "full",
-	-- },
-	-- header_playerChain = {
-	-- 	order = 7,
-	-- 	type = "header",
-	-- 	name = "Player Chain",
-	-- },
-	-- enablePlayerChain = {
-	-- 	order = 8,
-	-- 	type = "toggle",
-	-- 	name = "Enable",
-	-- 	desc = "Shows a rare, elite or rare elite chain around the player frame",
-	-- 	width = "half",
-	-- },
-	-- chainStyle = {
-	-- 	order = 9,
-	-- 	type = "select",
-	-- 	name = "Style",
-	-- 	values = {
-	-- 		"Rare",
-	-- 		"Elite",
-	-- 		"Rare Elite",
-	-- 	},
-	-- 	set = function(info, val)
-	-- 		module.db[info[#info]] = val
-	-- 		module.SetChainStyle()
-	-- 	end,
-	-- },
+	header_classColors = {
+		order = 4,
+		type = "header",
+		name = "Class Colors",
+	},
+	classColorsPlayer = {
+		order = 5,
+		type = "toggle",
+		name = "Player",
+		width = "full",
+	},
+	classColorsOthers = {
+		order = 6,
+		type = "toggle",
+		name = "Others",
+		desc = "Target, Target-of-Target, Focus, etc.",
+		width = "full",
+	},
+	header_playerChain = {
+		order = 7,
+		type = "header",
+		name = "Player Chain",
+	},
+	enablePlayerChain = {
+		order = 8,
+		type = "toggle",
+		name = "Enable",
+		desc = "Shows a rare, elite or rare elite chain around the player frame",
+		width = "half",
+	},
+	chainStyle = {
+		order = 9,
+		type = "select",
+		name = "Style",
+		values = {
+			"Rare",
+			"Elite",
+			"Rare Elite",
+		},
+		set = function(info, val)
+			module.db[info[#info]] = val
+			module.SetChainStyle()
+		end,
+	},
 	header_miscellaneous = {
 		order = 10,
 		type = "header",
@@ -202,19 +202,19 @@ function module.SetChainStyle()
 	if chain == 1 then -- Rare
 		-- Set rare texture to player frame
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("ui-hud-unitframe-target-portraiton-boss-rare-silver", TextureKitConstants.UseAtlasSize);
-		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 0, 1);
 
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", 11, -8);
 	elseif chain == 2 then -- Elite
 		-- Set rare texture to player frame
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("UI-HUD-UnitFrame-Target-PortraitOn-Boss-Gold", TextureKitConstants.UseAtlasSize);
-		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 0, 1);
 
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", 11, -8);
 	elseif chain == 3 then -- Rare Elite
 		-- Set rare texture to player frame
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetAtlas("UI-HUD-UnitFrame-Target-PortraitOn-Boss-Gold-Winged", TextureKitConstants.UseAtlasSize);
-		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 1, 0);
+		PlayerFrame.PlayerFrameContainer.FrameTexture:SetTexCoord(1, 0, 0, 1);
 
 		PlayerFrame.PlayerFrameContainer.FrameTexture:SetPoint("TOPLEFT", -8, -8);
 	end
